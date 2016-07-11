@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    div {
+        background-color:black;
+        width:42px;
+        border:1px solid black;
+    }
+    span { color:red }
+    ul { margin-left:20px; color:white; }
+    li { cursor:default; }
+</style>
+    <title>demo01</title>
+    <script type="text/javascript" src="http://s.dahao.de/lib/jquery-1.11.1/jquery.min.js"></script>
+</head>
+<body background="../img/u3.jpg">
+    <div>
+<!--         <button class="change">更换背景图</button> -->
+        <button class="show">弹窗</button>
+        <button class="loginwindow">登录</button>
+    </div>
+    <div style="display: none" class="flag">
+        <ul>
+            <img class="flag1" src="../img/u1.jpg" style="width: 300px; height=300px;">
+            <img class="flag2" src="../img/u2.jpg" style="width: 300px; height=300px;">
+            <img class="flag3" src="../img/u4.jpg" style="width: 300px; height=300px;">
+        </ul>
+        <button class="confirm">确定</button>
+        <button class="cancel">取消</button>
+    </div>
+    <div style="display: none" class="window">
+    <form class="login">
+        <input id="login" type="text" placeholder="请输入登录账号">
+        <input id="password" type="text" placeholder="请输入密码">
+    </form>
+    </div>
+    <ul>
+    <li>Milk</li>
+    <li>Bread</li>
+    <li class='fade'>Chips</li>
+    <li class='fade'>Socks</li>
+    </ul>
+    <script type="text/javascript">
+        // $('.change').on('click', function(){
+        //     document.body.background = '../img/u2.jpg';
+        // });
+        $("li").hover(
+            function () {
+            $(this).append($("<span> ***</span>"));
+        },
+            function () {
+            $(this).find("span:last").remove();
+        }
+    );
+        $("li.fade").hover(function(){
+            $(this).fadeOut(100);
+            $(this).fadeIn(500);
+        });
+        $('.loginwindow').on('click', function(){
+            $('.window').fadeToggle("fast", "");
+            $('.window').animate({
+                width: "12%",
+                opacity: 0.8,
+                marginLeft: "0.6in",
+                fontSize: "3em",
+                borderWidth: "10px"
+            }, 1500 );
+        });
+        $('#login').keyup(function(){
+            alert("haha");
+        })
+        $('.confirm').click(function(){
+            $('.flag').hide();
+        })
+        $('.show').on('click', function(){
+            $('.flag').fadeToggle("fast", "");
+            $('.flag').animate({
+                width: "80%",
+                opacity: 0.8,
+                marginLeft: "0.6in",
+                fontSize: "3em",
+                borderWidth: "10px"
+            }, 1500 );
+            // document.body.style.backgroundColor = 'white';
+            // console.log(document.body.style.backgroundColor);
+            // document.body.background = 'white';
+            // alert($('.flag').attr('style'));
+        });
+
+        $('.flag1').on('click', function(){
+            document.body.background = '../img/u1.jpg';
+        });
+
+        $('.flag2').on('click', function(){
+            document.body.background = '../img/u2.jpg';
+        });
+
+        $('.flag3').on('click', function(){
+            document.body.background = '../img/u4.jpg';
+        });
+    </script>
+</body>
+</html>
